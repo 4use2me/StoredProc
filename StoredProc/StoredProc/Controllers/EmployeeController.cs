@@ -7,7 +7,7 @@ namespace StoredProc.Controllers
 {
     public class EmployeeController : Controller
     {
-        public StoredProcDbContext_context;
+        public StoredProcDbContext _context;
 
         public EmployeeController
             (
@@ -23,8 +23,8 @@ namespace StoredProc.Controllers
 
         public IEnumerable<Employee> SearchResult()
         {
-            var result = _comtext.Employees
-                .FormSqlRaw<Employee>("spSearchEmployees")
+            var result = _context.Employees
+                .FromSqlRaw<Employee>("spSearchEmployees")
                 .ToList();
 
             return result;
